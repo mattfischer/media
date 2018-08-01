@@ -146,11 +146,13 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MP4\BoxReference.cpp" />
     <ClCompile Include="MP4\Box\FileType.cpp" />
+    <ClCompile Include="MP4\Box\SampleSize.cpp" />
     <ClCompile Include="MP4\File.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MP4\BoxReference.hpp" />
     <ClInclude Include="MP4\Box\FileType.hpp" />
+    <ClInclude Include="MP4\Box\SampleSize.hpp" />
     <ClInclude Include="MP4\File.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -11,6 +11,9 @@
     <ClCompile Include="MP4\Box\FileType.cpp">
       <Filter>MP4\Box</Filter>
     </ClCompile>
+    <ClCompile Include="MP4\Box\SampleSize.cpp">
+      <Filter>MP4\Box</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="MP4">
@@ -28,6 +31,9 @@
       <Filter>MP4</Filter>
     </ClInclude>
     <ClInclude Include="MP4\Box\FileType.hpp">
+      <Filter>MP4\Box</Filter>
+    </ClInclude>
+    <ClInclude Include="MP4\Box\SampleSize.hpp">
       <Filter>MP4\Box</Filter>
     </ClInclude>
   </ItemGroup>
