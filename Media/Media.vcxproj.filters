@@ -8,25 +8,13 @@
     <ClCompile Include="MP4\BoxReference.cpp">
       <Filter>MP4</Filter>
     </ClCompile>
-    <ClCompile Include="MP4\Box\FileType.cpp">
-      <Filter>MP4\Box</Filter>
-    </ClCompile>
-    <ClCompile Include="MP4\Box\SampleSize.cpp">
-      <Filter>MP4\Box</Filter>
-    </ClCompile>
-    <ClCompile Include="MP4\Box\SampleToChunk.cpp">
-      <Filter>MP4\Box</Filter>
-    </ClCompile>
-    <ClCompile Include="MP4\Box\ChunkOffset.cpp">
-      <Filter>MP4\Box</Filter>
+    <ClCompile Include="MP4\Box.cpp">
+      <Filter>MP4</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="MP4">
       <UniqueIdentifier>{551bb559-c294-4a6a-b45f-c207b13400d4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="MP4\Box">
-      <UniqueIdentifier>{8143fb21-948c-4779-b775-b8ac0c8fbcfb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -36,17 +24,8 @@
     <ClInclude Include="MP4\BoxReference.hpp">
       <Filter>MP4</Filter>
     </ClInclude>
-    <ClInclude Include="MP4\Box\FileType.hpp">
-      <Filter>MP4\Box</Filter>
-    </ClInclude>
-    <ClInclude Include="MP4\Box\SampleSize.hpp">
-      <Filter>MP4\Box</Filter>
-    </ClInclude>
-    <ClInclude Include="MP4\Box\SampleToChunk.hpp">
-      <Filter>MP4\Box</Filter>
-    </ClInclude>
-    <ClInclude Include="MP4\Box\ChunkOffset.hpp">
-      <Filter>MP4\Box</Filter>
+    <ClInclude Include="MP4\Box.hpp">
+      <Filter>MP4</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

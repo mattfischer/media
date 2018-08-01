@@ -1,9 +1,6 @@
 #include "MP4/File.hpp"
 #include "MP4/BoxReference.hpp"
-#include "MP4/Box/FileType.hpp"
-#include "MP4/Box/SampleSize.hpp"
-#include "MP4/Box/SampleToChunk.hpp"
-#include "MP4/Box/ChunkOffset.hpp"
+#include "MP4/Box.hpp"
 
 #include <iostream>
 
