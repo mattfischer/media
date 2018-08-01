@@ -5,6 +5,9 @@
     <ClCompile Include="MP4\File.cpp">
       <Filter>MP4</Filter>
     </ClCompile>
+    <ClCompile Include="MP4\BoxReference.cpp">
+      <Filter>MP4</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="MP4">
@@ -13,6 +16,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MP4\File.hpp">
+      <Filter>MP4</Filter>
+    </ClInclude>
+    <ClInclude Include="MP4\BoxReference.hpp">
       <Filter>MP4</Filter>
     </ClInclude>
   </ItemGroup>
