@@ -2,6 +2,8 @@
 #include "MP4/BoxReference.hpp"
 #include "MP4/Box/FileType.hpp"
 #include "MP4/Box/SampleSize.hpp"
+#include "MP4/Box/SampleToChunk.hpp"
+#include "MP4/Box/ChunkOffset.hpp"
 
 #include <iostream>
 
@@ -26,12 +28,15 @@ int main(int argc, char *argv[])
 	MP4::BoxReference mdia = trak.findChild("mdia", found);
 	MP4::BoxReference minf = mdia.findChild("minf", found);
 	MP4::BoxReference stbl = minf.findChild("stbl", found);
+	
 	MP4::BoxReference stsz = stbl.findChild("stsz", found);
-
 	MP4::Box::SampleSize sampleSize(stsz);
-	std::cout << "Sample sizes:" << std::endl;
-	for (std::uint32_t size : sampleSize.entry_sizes) {
-		std::cout << "  " << size << std::endl;
-	}
+
+	MP4::BoxReference stsc = stbl.findChild("stsc", found);
+	MP4::Box::SampleToChunk sampleToChunk(stsc);
+
+	MP4::BoxReference stco = stbl.findChild("stco", found);
+	MP4::Box::ChunkOffset chunkOffset(stco);
+
 	return 0;
 }
