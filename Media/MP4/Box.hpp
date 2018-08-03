@@ -13,6 +13,7 @@ namespace MP4 {
 		struct ChunkOffset {
 			std::vector<std::uint32_t> chunk_offsets;
 
+			ChunkOffset() = default;
 			ChunkOffset(const BoxReference &boxReference);
 		};
 
@@ -21,12 +22,14 @@ namespace MP4 {
 			std::uint32_t minor_version;
 			std::vector<std::string> compatible_brands;
 
+			FileType() = default;
 			FileType(const BoxReference &boxReference);
 		};
 
 		struct SampleSize {
 			std::vector<std::uint32_t> entry_sizes;
 
+			SampleSize() = default;
 			SampleSize(const BoxReference &boxReference);
 		};
 
@@ -39,6 +42,7 @@ namespace MP4 {
 
 			std::vector<Entry> entries;
 
+			SampleToChunk() = default;
 			SampleToChunk(const BoxReference &boxReference);
 		};
 	}

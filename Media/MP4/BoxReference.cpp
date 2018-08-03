@@ -27,6 +27,11 @@ namespace MP4 {
 		}
 	}
 
+	const File &BoxReference::file() const
+	{
+		return mFile;
+	}
+
 	std::string BoxReference::type() const
 	{
 		return std::string((char*)mType, 4);

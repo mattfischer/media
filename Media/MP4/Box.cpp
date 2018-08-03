@@ -28,11 +28,20 @@ namespace MP4 {
 
 		SampleSize::SampleSize(const BoxReference &boxReference)
 		{
-			std::uint32_t sample_size = boxReference.readUint32(0);
-			std::uint32_t sample_count = boxReference.readUint32(0);
+			std::uint32_t sample_size = boxReference.readUint32(4);
+			std::uint32_t sample_count = boxReference.readUint32(8);
 
-			for (std::uint64_t offset = 0; offset < boxReference.dataSize(); offset += 4) {
-				entry_sizes.push_back(boxReference.readUint32(offset));
+			std::uint64_t offset = 12;
+			for (unsigned int i = 0; i < sample_count; i++) {
+				std::uint32_t size;
+				if (sample_size > 0) {
+					size = sample_size;
+				} else {
+					size = boxReference.readUint32(offset);
+					offset += 4;
+				}
+
+				entry_sizes.push_back(size);
 			}
 		}
 

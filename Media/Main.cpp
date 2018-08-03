@@ -1,6 +1,5 @@
-#include "MP4/File.hpp"
-#include "MP4/BoxReference.hpp"
-#include "MP4/Box.hpp"
+#include "MP4/Container.hpp"
+#include "MP4/TrackReader.hpp"
 
 #include <iostream>
 
@@ -12,28 +11,22 @@ int main(int argc, char *argv[])
 	}
 
 	std::string filename = argv[1];
-	MP4::File file(filename);
 
-	if (!file.valid()) {
+	MP4::Container container(filename);
+
+	if (!container.valid()) {
 		std::cerr << "Error: Could not open file " << filename << std::endl;
 		return 1;
 	}
 
-	bool found;
-	MP4::BoxReference moov = file.root().findChild("moov", found);
-	MP4::BoxReference trak = moov.findChild("trak", found);
-	MP4::BoxReference mdia = trak.findChild("mdia", found);
-	MP4::BoxReference minf = mdia.findChild("minf", found);
-	MP4::BoxReference stbl = minf.findChild("stbl", found);
-	
-	MP4::BoxReference stsz = stbl.findChild("stsz", found);
-	MP4::Box::SampleSize sampleSize(stsz);
-
-	MP4::BoxReference stsc = stbl.findChild("stsc", found);
-	MP4::Box::SampleToChunk sampleToChunk(stsc);
-
-	MP4::BoxReference stco = stbl.findChild("stco", found);
-	MP4::Box::ChunkOffset chunkOffset(stco);
-
+	char buffer[1024];
+	MP4::TrackReader reader(*container.tracks()[0]);
+	while (true) {
+		unsigned int read = reader.readNextSample(buffer, sizeof(buffer));
+		if (read == 0) {
+			break;
+		}
+		std::cout << "Sample size: " << read << std::endl;
+	}
 	return 0;
 }

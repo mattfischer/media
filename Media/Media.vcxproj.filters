@@ -11,6 +11,15 @@
     <ClCompile Include="MP4\Box.cpp">
       <Filter>MP4</Filter>
     </ClCompile>
+    <ClCompile Include="MP4\Container.cpp">
+      <Filter>MP4</Filter>
+    </ClCompile>
+    <ClCompile Include="MP4\Track.cpp">
+      <Filter>MP4</Filter>
+    </ClCompile>
+    <ClCompile Include="MP4\TrackReader.cpp">
+      <Filter>MP4</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="MP4">
@@ -25,6 +34,15 @@
       <Filter>MP4</Filter>
     </ClInclude>
     <ClInclude Include="MP4\Box.hpp">
+      <Filter>MP4</Filter>
+    </ClInclude>
+    <ClInclude Include="MP4\Container.hpp">
+      <Filter>MP4</Filter>
+    </ClInclude>
+    <ClInclude Include="MP4\Track.hpp">
+      <Filter>MP4</Filter>
+    </ClInclude>
+    <ClInclude Include="MP4\TrackReader.hpp">
       <Filter>MP4</Filter>
     </ClInclude>
   </ItemGroup>
