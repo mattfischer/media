@@ -14,10 +14,12 @@ namespace MP4 {
 		BoxReference(const File &file, std::uint64_t start);
 
 		const File &file() const;
+		std::uint64_t offset() const;
 
 		std::string type() const;
 		std::uint64_t size() const;
 		std::uint64_t dataSize() const;
+		std::uint64_t dataStart() const;
 
 		std::vector<BoxReference> children() const;
 

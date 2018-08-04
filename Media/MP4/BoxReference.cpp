@@ -32,6 +32,11 @@ namespace MP4 {
 		return mFile;
 	}
 
+	std::uint64_t BoxReference::offset() const
+	{
+		return mOffset;
+	}
+
 	std::string BoxReference::type() const
 	{
 		return std::string((char*)mType, 4);
@@ -45,6 +50,11 @@ namespace MP4 {
 	std::uint64_t BoxReference::dataSize() const
 	{
 		return mSize - mDataStart;
+	}
+
+	std::uint64_t BoxReference::dataStart() const
+	{
+		return mDataStart;
 	}
 
 	std::vector<BoxReference> BoxReference::children() const

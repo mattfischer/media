@@ -45,6 +45,21 @@ namespace MP4 {
 			SampleToChunk() = default;
 			SampleToChunk(const BoxReference &boxReference);
 		};
+
+		struct Handler {
+			std::string type;
+			std::string name;
+
+			Handler() = default;
+			Handler(const BoxReference &boxReference);
+		};
+
+		struct SampleDescription {
+			std::vector<BoxReference> entries;
+
+			SampleDescription() = default;
+			SampleDescription(const BoxReference &boxReference);
+		};
 	}
 }
 #endif

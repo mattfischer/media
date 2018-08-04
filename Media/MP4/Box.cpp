@@ -58,5 +58,27 @@ namespace MP4 {
 				offset += 12;
 			}
 		}
+
+		Handler::Handler(const BoxReference &boxReference)
+		{
+			char type_chars[4];
+			boxReference.read(type_chars, 4, 8);
+			type = std::string(type_chars, 4);
+			char *name_chars = new char[(unsigned int)boxReference.dataSize() - 12];
+			boxReference.read(name_chars, boxReference.dataSize() - 12, 12);
+			name = std::string(name_chars);
+			delete[] name_chars;
+		}
+
+		SampleDescription::SampleDescription(const BoxReference &boxReference)
+		{
+			std::uint32_t entry_count = boxReference.readUint32(4);
+			std::uint64_t offset = 8;
+			for (unsigned int i = 0; i < entry_count; i++) {
+				BoxReference newBoxReference(boxReference.file(), boxReference.offset() + boxReference.dataStart() + offset);
+				entries.push_back(newBoxReference);
+				offset += newBoxReference.size();
+			}
+		}
 	}
 }

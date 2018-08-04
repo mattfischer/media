@@ -38,6 +38,18 @@ namespace MP4 {
 			return;
 		}
 		mChunkOffset = Box::ChunkOffset(stco);
+
+		BoxReference hdlr = mdia.findChild("hdlr", found);
+		if (!found) {
+			return;
+		}
+		mHandler = Box::Handler(hdlr);
+
+		BoxReference stsd = stbl.findChild("stsd", found);
+		if (!found) {
+			return;
+		}
+		Box::SampleDescription sampleDescription(stsd);
 	}
 
 	const Box::SampleSize &Track::sampleSize() const
