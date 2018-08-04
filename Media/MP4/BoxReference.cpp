@@ -92,6 +92,11 @@ namespace MP4 {
 		mFile.read(data, size, mOffset + mDataStart + position);
 	}
 
+	std::uint16_t BoxReference::readUint16(std::uint64_t position) const
+	{
+		return mFile.readUint16(mOffset + mDataStart + position);
+	}
+
 	std::uint32_t BoxReference::readUint32(std::uint64_t position) const
 	{
 		return mFile.readUint32(mOffset + mDataStart + position);

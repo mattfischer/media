@@ -80,5 +80,26 @@ namespace MP4 {
 				offset += newBoxReference.size();
 			}
 		}
+
+		AudioSampleEntry::AudioSampleEntry(const BoxReference &boxReference)
+		{
+			data_reference_index = boxReference.readUint16(6);
+			channelcount = boxReference.readUint16(16);
+			samplesize = boxReference.readUint16(18);
+			pre_defined = boxReference.readUint16(20);
+			samplerate = boxReference.readUint32(24);
+		}
+
+		ESDBox::ESDBox(const BoxReference &boxReference) {
+			ES.resize((unsigned int)boxReference.dataSize() - 4);
+			boxReference.read(&ES[0], boxReference.dataSize() - 4, 4);
+		}
+
+		MP4AudioSampleEntry::MP4AudioSampleEntry(const BoxReference &boxReference)
+		{
+			audioSampleEntry = AudioSampleEntry(boxReference);
+			BoxReference esds(boxReference.file(), boxReference.offset() + boxReference.dataStart() + 28);
+			esdBox = ESDBox(esds);
+		}
 	}
 }

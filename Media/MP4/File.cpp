@@ -29,6 +29,15 @@ namespace MP4 {
 		mFile.read((char*)data, size);
 	}
 
+	std::uint16_t File::readUint16(std::uint64_t position) const
+	{
+		std::uint8_t data[2];
+		read(data, 2, position);
+
+		return ((uint32_t)data[1]) |
+			((uint32_t)data[0] << 8);
+	}
+
 	std::uint32_t File::readUint32(std::uint64_t position) const
 	{
 		std::uint8_t data[4];

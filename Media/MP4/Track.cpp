@@ -43,13 +43,18 @@ namespace MP4 {
 		if (!found) {
 			return;
 		}
-		mHandler = Box::Handler(hdlr);
+		Box::Handler handler(hdlr);
 
 		BoxReference stsd = stbl.findChild("stsd", found);
 		if (!found) {
 			return;
 		}
 		Box::SampleDescription sampleDescription(stsd);
+
+		if (handler.type == "soun") {
+			const BoxReference &mp4a = sampleDescription.entries[0];
+			Box::MP4AudioSampleEntry mp4AudioSampleEntry(mp4a);
+		}
 	}
 
 	const Box::SampleSize &Track::sampleSize() const

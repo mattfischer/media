@@ -18,6 +18,7 @@ namespace MP4 {
 		BoxReference root() const;
 
 		void read(void *data, std::uint64_t size, std::uint64_t position) const;
+		std::uint16_t readUint16(std::uint64_t position) const;
 		std::uint32_t readUint32(std::uint64_t position) const;
 		std::uint64_t readUint64(std::uint64_t position) const;
 

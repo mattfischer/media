@@ -60,6 +60,32 @@ namespace MP4 {
 			SampleDescription() = default;
 			SampleDescription(const BoxReference &boxReference);
 		};
+
+		struct AudioSampleEntry {
+			std::uint16_t data_reference_index;
+			std::uint16_t channelcount;
+			std::uint16_t samplesize;
+			std::uint16_t pre_defined;
+			std::uint32_t samplerate;
+
+			AudioSampleEntry() = default;
+			AudioSampleEntry(const BoxReference &boxReference);
+		};
+
+		struct ESDBox {
+			std::vector<uint8_t> ES;
+
+			ESDBox() = default;
+			ESDBox(const BoxReference &boxReference);
+		};
+
+		struct MP4AudioSampleEntry {
+			AudioSampleEntry audioSampleEntry;
+			ESDBox esdBox;
+
+			MP4AudioSampleEntry() = default;
+			MP4AudioSampleEntry(const BoxReference &boxReference);
+		};
 	}
 }
 #endif

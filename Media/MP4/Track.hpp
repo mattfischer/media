@@ -20,7 +20,6 @@ namespace MP4 {
 		Box::SampleSize mSampleSize;
 		Box::ChunkOffset mChunkOffset;
 		Box::SampleToChunk mSampleToChunk;
-		Box::Handler mHandler;
 	};
 }
 #endif
