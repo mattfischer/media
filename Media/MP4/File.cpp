@@ -1,5 +1,6 @@
 #include "File.hpp"
 #include "BoxReference.hpp"
+#include "Util/BitReader.hpp"
 
 namespace MP4 {
 	File::File(const std::string &filename)
@@ -34,8 +35,8 @@ namespace MP4 {
 		std::uint8_t data[2];
 		read(data, 2, position);
 
-		return ((uint32_t)data[1]) |
-			((uint32_t)data[0] << 8);
+		Util::BitReader reader(data, sizeof(data));
+		return (std::uint16_t)reader.read(16);
 	}
 
 	std::uint32_t File::readUint32(std::uint64_t position) const
@@ -43,10 +44,8 @@ namespace MP4 {
 		std::uint8_t data[4];
 		read(data, 4, position);
 
-		return ((uint32_t)data[3]) |
-			   ((uint32_t)data[2] << 8) |
-			   ((uint32_t)data[1] << 16) |
-			   ((uint32_t)data[0] << 24);
+		Util::BitReader reader(data, sizeof(data));
+		return (std::uint32_t)reader.read(32);
 	}
 
 	std::uint64_t File::readUint64(std::uint64_t position) const
@@ -54,13 +53,7 @@ namespace MP4 {
 		std::uint8_t data[8];
 		read(data, 8, position);
 
-		return ((uint64_t)data[7]) |
-			   ((uint64_t)data[6] << 8) |
-			   ((uint64_t)data[5] << 16) |
-			   ((uint64_t)data[4] << 24) |
-			   ((uint64_t)data[3] << 32) |
-			   ((uint64_t)data[2] << 40) |
-			   ((uint64_t)data[1] << 48) |
-			   ((uint64_t)data[0] << 56);
+		Util::BitReader reader(data, sizeof(data));
+		return (std::uint64_t)reader.read(64);
 	}
 }
