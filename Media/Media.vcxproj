@@ -143,6 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Audio\Decoder.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MP4\Box.cpp" />
     <ClCompile Include="MP4\BoxReference.cpp" />
@@ -150,15 +151,18 @@
     <ClCompile Include="MP4\File.cpp" />
     <ClCompile Include="MP4\Track.cpp" />
     <ClCompile Include="MP4\TrackReader.cpp" />
+    <ClCompile Include="System\EsDescriptor.cpp" />
     <ClCompile Include="Util\BitReader.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Audio\Decoder.hpp" />
     <ClInclude Include="MP4\Box.hpp" />
     <ClInclude Include="MP4\BoxReference.hpp" />
     <ClInclude Include="MP4\Container.hpp" />
     <ClInclude Include="MP4\File.hpp" />
     <ClInclude Include="MP4\Track.hpp" />
     <ClInclude Include="MP4\TrackReader.hpp" />
+    <ClInclude Include="System\EsDescriptor.hpp" />
     <ClInclude Include="Util\BitReader.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

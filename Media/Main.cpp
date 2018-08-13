@@ -1,6 +1,8 @@
 #include "MP4/Container.hpp"
 #include "MP4/TrackReader.hpp"
 
+#include "Audio/Decoder.hpp"
+
 #include <iostream>
 
 int main(int argc, char *argv[])
@@ -19,14 +21,20 @@ int main(int argc, char *argv[])
 		return 1;
 	}
 
-	char buffer[1024];
-	MP4::TrackReader reader(*container.tracks()[0]);
-	while (true) {
-		unsigned int read = reader.readNextSample(buffer, sizeof(buffer));
-		if (read == 0) {
-			break;
+	MP4::Track &track = *container.tracks()[0];
+	if (track.type() == MP4::Track::Type::Sound) {
+		Audio::Decoder decoder(track.esDescriptor());
+
+		char buffer[1024];
+		MP4::TrackReader reader(*container.tracks()[0]);
+		while (true) {
+			unsigned int read = reader.readNextSample(buffer, sizeof(buffer));
+			if (read == 0) {
+				break;
+			}
+			std::cout << "Sample size: " << read << std::endl;
 		}
-		std::cout << "Sample size: " << read << std::endl;
 	}
+
 	return 0;
 }

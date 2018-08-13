@@ -23,6 +23,12 @@
     <ClCompile Include="Util\BitReader.cpp">
       <Filter>Util</Filter>
     </ClCompile>
+    <ClCompile Include="System\EsDescriptor.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="Audio\Decoder.cpp">
+      <Filter>Audio</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="MP4">
@@ -30,6 +36,12 @@
     </Filter>
     <Filter Include="Util">
       <UniqueIdentifier>{771d2ff0-2b58-4d46-bd1d-63a88412b194}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System">
+      <UniqueIdentifier>{ecb596c4-f0c4-4acf-8088-232a7ae2d66f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Audio">
+      <UniqueIdentifier>{dc14c8bd-7653-40c8-9720-f273eeea249b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -53,6 +65,12 @@
     </ClInclude>
     <ClInclude Include="Util\BitReader.hpp">
       <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="System\EsDescriptor.hpp">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="Audio\Decoder.hpp">
+      <Filter>Audio</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

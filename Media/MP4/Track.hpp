@@ -4,10 +4,21 @@
 #include "BoxReference.hpp"
 #include "Box.hpp"
 
+#include "System/EsDescriptor.hpp"
+
 namespace MP4 {
 	class Track {
 	public:
+		enum class Type {
+			None,
+			Sound,
+			Video,
+			Hint
+		};
+
 		Track(const BoxReference &boxReference);
+
+		Type type() const;
 
 		const Box::SampleSize &sampleSize() const;
 		const Box::ChunkOffset &chunkOffset() const;
@@ -15,11 +26,15 @@ namespace MP4 {
 
 		const BoxReference &boxReference() const;
 
+		const System::EsDescriptor &esDescriptor() const;
+
 	private:
+		Type mType;
 		BoxReference mBoxReference;
 		Box::SampleSize mSampleSize;
 		Box::ChunkOffset mChunkOffset;
 		Box::SampleToChunk mSampleToChunk;
+		System::EsDescriptor mEsDescriptor;
 	};
 }
 #endif

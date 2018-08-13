@@ -1,10 +1,13 @@
 #include "Track.hpp"
 #include "Box.hpp"
+#include "Util/BitReader.hpp"
 
 namespace MP4 {
 	Track::Track(const BoxReference &boxReference)
 		: mBoxReference(boxReference)
 	{
+		mType = Type::None;
+
 		bool found;
 		BoxReference mdia = boxReference.findChild("mdia", found);
 		if (!found) {
@@ -52,9 +55,17 @@ namespace MP4 {
 		Box::SampleDescription sampleDescription(stsd);
 
 		if (handler.type == "soun") {
+			mType = Type::Sound;
+
 			const BoxReference &mp4a = sampleDescription.entries[0];
 			Box::MP4AudioSampleEntry mp4AudioSampleEntry(mp4a);
+			mEsDescriptor = System::EsDescriptor(mp4AudioSampleEntry.esdBox.ES);
 		}
+	}
+
+	Track::Type Track::type() const
+	{
+		return mType;
 	}
 
 	const Box::SampleSize &Track::sampleSize() const
@@ -75,5 +86,10 @@ namespace MP4 {
 	const BoxReference &Track::boxReference() const
 	{
 		return mBoxReference;
+	}
+
+	const System::EsDescriptor &Track::esDescriptor() const
+	{
+		return mEsDescriptor;
 	}
 }
